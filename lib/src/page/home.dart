@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,12 +38,14 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
             children: <Widget>[
               Column(
                 children: <Widget>[
-                   opcionMenuHome(tamanoHorizontalOpcion,"GUIA VIRTUAL",Icon(Icons.accessibility,size: 40))
+                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"GUIA VIRTUAL",Icon(Icons.accessibility,size: 40))
+
                 ],
+                 
               ),
               Column(
                 children: <Widget>[
-                   opcionMenuHome(tamanoHorizontalOpcion,"REALIDAD AUMENTADA",Icon(Icons.access_alarm,size: 40))
+                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"REALIDAD AUMENTADA",Icon(Icons.access_alarm,size: 40))
                 ],
               ),
             ],
@@ -51,12 +54,12 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
             children: <Widget>[
               Column(
                 children: <Widget>[
-                   opcionMenuHome(tamanoHorizontalOpcion,"RESEÑAS",Icon(Icons.accessibility,size: 40))
+                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"RESEÑAS",Icon(Icons.accessibility,size: 40))
                 ],
               ),
               Column(
                 children: <Widget>[
-                   opcionMenuHome(tamanoHorizontalOpcion,"INICIAR SESION",Icon(Icons.perm_identity,size: 40))
+                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"INICIAR SESION",Icon(Icons.perm_identity,size: 40))
                 ],
               ),
             ],
@@ -92,7 +95,7 @@ Widget _panelbanner(context) => Container(
       )
   );
   
-Widget opcionMenuHome(tamanoHorizontalOpcion,String texto,Icon name)=> Container(
+Widget opcionMenuHome(context,tamanoHorizontalOpcion,String texto,Icon name)=> Container(
     height: 100,    
     width: tamanoHorizontalOpcion/2,
     child: Column(
@@ -102,15 +105,27 @@ Widget opcionMenuHome(tamanoHorizontalOpcion,String texto,Icon name)=> Container
            mainAxisAlignment: MainAxisAlignment.center,      
            children: <Widget>[                          
               name
-
            ],
           ),
          Row(
             mainAxisAlignment: MainAxisAlignment.center,      
             children: <Widget>[             
-               Text(texto,
-                    style: TextStyle(fontSize: 17),
-                    )
+               
+             //  Text(texto,
+               //     style: TextStyle(fontSize: 17),
+                 //   ),
+               RaisedButton(
+                 
+                 color: Colors.white,
+                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                 elevation: 0.0,
+                 onPressed: (){
+                   print("funciona");
+                 },
+                 child: Text(texto,
+                          style: TextStyle(fontSize: 14),
+                        ),
+               )
                                  
            ],
           )
