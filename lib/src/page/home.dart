@@ -1,4 +1,5 @@
 
+import 'package:app_avi/src/page/login.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget {
                     Column(
                       children: <Widget>[
                         _panelbanner(context),
-                        _panelOpciones(tamanoHorizontalOpcion)
+                        _panelOpciones(context,tamanoHorizontalOpcion)
                       ],
                     
                     ),
@@ -29,7 +30,7 @@ class HomePage extends StatelessWidget {
 
 }
 
-Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
+Widget _panelOpciones(context,tamanoHorizontalOpcion) => Container(
     child: Stack(
      children: <Widget>[
       Column(
@@ -38,14 +39,14 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
             children: <Widget>[
               Column(
                 children: <Widget>[
-                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"GUIA VIRTUAL",Icon(Icons.accessibility,size: 40))
+                   opcionMenuHome(context,tamanoHorizontalOpcion,"GUIA VIRTUAL",Icon(Icons.accessibility,size: 40))
 
                 ],
                  
               ),
               Column(
                 children: <Widget>[
-                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"REALIDAD AUMENTADA",Icon(Icons.access_alarm,size: 40))
+                   opcionMenuHome(context,tamanoHorizontalOpcion,"REALIDAD AUMENTADA",Icon(Icons.access_alarm,size: 40))
                 ],
               ),
             ],
@@ -54,12 +55,12 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
             children: <Widget>[
               Column(
                 children: <Widget>[
-                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"RESEÑAS",Icon(Icons.accessibility,size: 40))
+                   opcionMenuHome(context,tamanoHorizontalOpcion,"RESEÑAS",Icon(Icons.accessibility,size: 40))
                 ],
               ),
               Column(
                 children: <Widget>[
-                   opcionMenuHome(BuildContext,tamanoHorizontalOpcion,"INICIAR SESION",Icon(Icons.perm_identity,size: 40))
+                   opcionMenuHome(context,tamanoHorizontalOpcion,"INICIAR SESION",Icon(Icons.perm_identity,size: 40))
                 ],
               ),
             ],
@@ -72,7 +73,7 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
     decoration: BoxDecoration(
       color: Colors.white,
       boxShadow: [
-        new BoxShadow(
+         BoxShadow(
           color: Colors.grey,
           offset: new Offset(0.0, 2.0), 
           blurRadius: 5.0,
@@ -86,13 +87,22 @@ Widget _panelOpciones(tamanoHorizontalOpcion) => Container(
   );
  
 Widget _panelbanner(context) => Container(
-    height: 350.0, 
+    height: 280.0, 
     width:  MediaQuery.of(context).size.width,
-    color: Colors.black38,
-    child: Center(
-      child: 
-      Text("Imagen de banner",style: TextStyle(fontSize: 30),),
-      )
+    padding: EdgeInsets.only(
+      top: 50,
+      bottom: 0
+    ),
+    decoration : BoxDecoration(
+      
+      image: DecorationImage(
+        image: NetworkImage(
+        "http://www.travelonews.com/wp-content/uploads/2016/06/centros-arqueologicos-lambayeque.jpg"),
+        alignment: Alignment.topCenter,
+    ),
+    
+   )
+
   );
   
 Widget opcionMenuHome(context,tamanoHorizontalOpcion,String texto,Icon name)=> Container(
@@ -120,7 +130,13 @@ Widget opcionMenuHome(context,tamanoHorizontalOpcion,String texto,Icon name)=> C
                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                  elevation: 0.0,
                  onPressed: (){
-                   print("funciona");
+                   Navigator.push(
+                     context,
+                      MaterialPageRoute(
+                         builder:(context)=>LoginPage()
+                           
+                      ),
+                  );
                  },
                  child: Text(texto,
                           style: TextStyle(fontSize: 14),
