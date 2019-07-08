@@ -1,13 +1,11 @@
 
-import 'package:app_avi/src/page/perfil.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
-
-
+import 'package:app_avi/src/page/perfil.dart';
+import 'package:app_avi/src/page/recover.dart';
+import 'package:app_avi/src/page/registroUser.dart';
 class LoginPage extends StatelessWidget {
-
-
 
 @override
   Widget build(BuildContext context) {  
@@ -25,7 +23,7 @@ class LoginPage extends StatelessWidget {
           child: Stack(
              children: <Widget>[              
                Container(
-                 height: altura/1.60,
+                 height: altura/1.80,
                  decoration: BoxDecoration(
                    boxShadow: [ 
                      BoxShadow(
@@ -83,42 +81,97 @@ class LoginPage extends StatelessWidget {
   Widget _panelMainLogeo(context,altura)=>(
     Container(
       width: MediaQuery.of(context).size.width,
-      height: altura/2.3,
+      height: altura/2.8,
       child: Container(
         margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
         child: Form(
               child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[                
-                    TextFormField(
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  children: <Widget>[
+                  //caja de usuario
+                      TextFormField(
+                      style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                       textAlign:TextAlign.center,
                       decoration:  InputDecoration(
                         labelText: "USUARIO"
-                        
                       ),
                     ),
+                   //caja de contraseña 
                     TextFormField(
-                      style: TextStyle(fontSize: 30,color: Colors.white),
+                       style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
                       decoration:  InputDecoration(
                         labelText: "CONTRASEÑA",
                       ),
                     ),
-                    RaisedButton(
-                      
-                      child: Text("I n g r e s a r"),
-                      color: Colors.red,
-                      elevation: null,
-                      textTheme: ButtonTextTheme.normal,
-                      onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context)=>PerfilPage()                            
-                          )
-                        );
-                      },
-                    )
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 20.0, 0, 0),
+                          color: Colors.blueGrey,
+                          height: altura/18,
+                          width: MediaQuery.of(context).size.width-30,                          
+                          child: Center(
+                           child:  InkWell(
+                             child: Text("I N G R E S A R",style: TextStyle(fontSize: 25.0),),
+                             onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context)=>PerfilPage()                            
+                                  )
+                                );
+                             },
+                           ),
+                           
+                          ),
+                          
+
+                        )
+                      ],
+                    ),         
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                      children: <Widget>[
+
+                        //boton ingresar 
+                        Column(
+                          children: <Widget>[
+                            RaisedButton(
+                              child: Text("Crear cuenta"),
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context)=>RegistroPage()                            
+                                  )
+                                );
+                              },
+                            )
+                          ],
+                        ),
+                        //boton crear cuenta
+                        Column(                          
+                          children: <Widget>[
+                            RaisedButton(
+                              child: Text("Olvido contraseña?"),
+                              color: Color.fromRGBO(250,250,250,0.4),
+                              onPressed: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context)=>RecoverPage()                            
+                                  )
+                                );
+                              },
+                            )
+                          ],
+                        ),
+                         
+                    
+                      ],
+                    ),
+                   
                   ],  
                 ),
         ),
@@ -132,24 +185,32 @@ class LoginPage extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
                 height: altura/11.8,
-                alignment: Alignment.center,                
                 width: MediaQuery.of(context).size.width/2,
-                child: Text( "Gmail",style: TextStyle(fontSize:25,color: Colors.white),),
+                child: Row(                 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image(image: AssetImage("assets/img/gmail.png")),
+                    Text( "   Gmail",style: TextStyle(fontSize:25,color: Colors.black),),
+                  ],
+                )
               )
             ],
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
              Container(
-               height: altura/11.8,
-               alignment: Alignment.center,
+                height: altura/11.8,
                 width: MediaQuery.of(context).size.width/2,
-                child: Text("Facebook",style: TextStyle(fontSize:25,color: Colors.white),),
+                child: Row(                  
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image(image: AssetImage("assets/img/facebook.png"),),
+                    Text( "   Facebook",style: TextStyle(fontSize:25,color: Colors.black),),
+                  ],
+                )
               )
             ],
           )
